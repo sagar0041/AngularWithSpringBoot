@@ -32,7 +32,6 @@ public class RoomController {
 		return listRoom;
 	}
 
-	//used to get room for id
 	@GetMapping("/api/room/{id}")
 	public Room getRoomById(@PathVariable Long id) {
 		return service.get(id);
