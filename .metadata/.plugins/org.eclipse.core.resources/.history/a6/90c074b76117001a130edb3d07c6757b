@@ -1,0 +1,16 @@
+package com.meetingRoom.model;
+
+public enum FacilityName {
+
+	Projector ("Projector"),
+	Router ("Router"),
+	Pen ("PEN"),
+	Chair("CHAIR");
+
+	private final String name;
+	
+	FacilityName(String name) {
+		this.name = name;
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.meetingRoom.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.meetingRoom.model.Room;
+
+public interface RoomBookingDetailRepo extends JpaRepository<Room, Long>{
+
+}

@@ -1,0 +1,13 @@
+package com.meetingRoom.model;
+
+public enum RoomName {
+
+	ConferenceRoom1,
+	ConferenceRoom2,
+	BoardRoom,
+	MettingRoom1,
+	MettingRoom2,
+	MettingRoom3,
+	TrainigRoom,
+	InterviewRoom
+}

@@ -1,0 +1,16 @@
+package com.meetingRoom.service;
+
+import java.util.List;
+
+import com.meetingRoom.model.Room;
+
+public interface RoomService {
+
+	public List<Room> listAll();
+	
+	public Room get(int id);
+	
+	public Room SaveEditRoom(Room room);
+	
+	
+}

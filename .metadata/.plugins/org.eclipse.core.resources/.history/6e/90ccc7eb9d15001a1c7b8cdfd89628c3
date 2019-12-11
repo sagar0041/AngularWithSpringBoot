@@ -1,0 +1,16 @@
+package com.meetingRoom.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.meetingRoom.model.Department;
+import com.meetingRoom.model.Role;
+import com.meetingRoom.model.RoleName;
+
+@Repository
+public interface DepartmentRepository extends JpaRepository<Department, Long> {
+	Optional<Department> findByName(Department roleName);
+
+}

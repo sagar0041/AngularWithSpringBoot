@@ -1,0 +1,8 @@
+package com.meetingRoom.message;
+
+public class RoomMessage {
+
+	private String name;
+	
+	private String location;
+}

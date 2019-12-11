@@ -1,0 +1,12 @@
+package com.meetingRoom.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.meetingRoom.model.Facility;
+import com.meetingRoom.model.FacilityName;
+
+public interface FacilityRepository extends JpaRepository<Facility, Long> {
+
+	public FacilityName findByName(String name);
+
+}

@@ -1,0 +1,63 @@
+package com.meetingRoom.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.meetingRoom.model.Room;
+
+public class RoomBookingServiceImp implements RoomService {
+
+	@Autowired
+	RoomBookingServiceImp roomBookingService;
+
+	@Override
+	public void saveRoom(Room room) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isUserAlreadyPresent(Room room) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Room> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Room get(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Room SaveEditRoom(Room room) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Room> selectAvailable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateStatusPending(int id, String status) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Room> availableRoomByDate(String date1, String date2, String Status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

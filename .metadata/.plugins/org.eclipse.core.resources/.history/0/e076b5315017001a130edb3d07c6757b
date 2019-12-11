@@ -1,0 +1,17 @@
+package com.meetingRoom.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.meetingRoom.model.Room;
+import com.meetingRoom.repository.RoomRepository;
+
+public class RoomServiceImpl implements RoomService {
+
+	@Autowired
+	private RoomRepository roomRepository;
+
+}

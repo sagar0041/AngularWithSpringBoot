@@ -1,0 +1,8 @@
+package com.meetingRoom.model;
+
+public enum DepartmentName {
+
+	DEPT_JAVA,
+	DEPT_IOS,
+	DEPT_ANDROID
+}

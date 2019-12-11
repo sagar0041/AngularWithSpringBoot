@@ -1,0 +1,5 @@
+package com.meetingRoom.repository;
+
+public class RoomBookingDetailRepo {
+
+}

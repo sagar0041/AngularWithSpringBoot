@@ -1,0 +1,83 @@
+package com.meetingRoom.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.meetingRoom.model.Room;
+import com.meetingRoom.service.RoomService;
+
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+public class RoomController {
+
+	@Autowired
+	private RoomService service;
+
+	@GetMapping("/api/room/getAllRoom")
+	public List<Room> getAllRoom() {
+		List<Room> listRoom = service.listAll();
+		return listRoom;
+	}
+
+	@GetMapping("/api/room/{id}")
+	public Room getRoomById(@PathVariable Long id) {
+		return service.get(id);
+	}
+
+	@DeleteMapping("/api/room/delete/{id}")
+	public boolean deleteRoom(@PathVariable Long id) {
+		service.delete(id);
+		return true;
+	}
+	
+
+	@PutMapping(path = "/api/room/update", produces = "application/JSON")
+	public Room saveOrUpdateItem(@RequestBody Room room) {
+		return service.save(room);
+	}
+	
+	
+	@PutMapping("/api/room/update/{id}")
+	public ResponseEntity<Room> updateRoom(@PathVariable(value = "id") Long id,
+			@Valid @RequestBody Room room) {
+		Room updateRoom = service.get(id);
+		updateRoom.setId(room.getId());
+		updateRoom.setName(room.getName());
+		updateRoom.setLocation(room.getLocation());
+		updateRoom.setFacility(room.getFacility());
+		final Room updatedRoom = service.save(updateRoom);
+		return ResponseEntity.ok(updatedRoom);
+	}
+	
+	@PatchMapping(path = "/api/room/patch/{id}", produces = "application/JSON")
+	public Room patchUpdateItemById(@PathVariable Long id, @Valid @RequestBody Room room) {
+		Room patchRoom = service.get(id);
+		patchRoom.setFacility(room.getFacility());
+		patchRoom.setLocation(room.getLocation());
+		Room updatedRoom = service.save(patchRoom);
+		return updatedRoom;
+	}
+
+	@PostMapping("/api/room/add")
+	public Room createRoom(@Valid @RequestBody Room room) {
+		System.out.println(room.toString());
+		room.getId();
+		room.getLocation();
+		room.getName();
+		room.getFacility();
+		return service.save(room);
+	}
+}

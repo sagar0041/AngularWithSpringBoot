@@ -1,0 +1,33 @@
+package com.meetingRoom.model;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "room")
+public class Room {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name = "room_name")
+	private String RoomName;
+	
+	@Column(name = "room_location")
+	private String location;
+	
+	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+	private Set facility;
+	
+	
+	
+}

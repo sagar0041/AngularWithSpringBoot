@@ -1,0 +1,50 @@
+package com.meetingRoom.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.meetingRoom.model.Room;
+import com.meetingRoom.repository.RoomRepository;
+
+public class RoomServiceImpl implements RoomService {
+
+	@Autowired
+	private RoomRepository roomRepository;
+
+	@Override
+	public List<Room> getRoom() {
+		return roomRepository.findAll();
+	}
+
+	@Override
+	public Optional<Room> getRoomById(Long id) {
+		return roomRepository.findById(id);
+	}
+
+	@Override
+	public Room AddNewRoom(Room room) {
+		return roomRepository.save(room);
+	}
+
+	@Override
+	public Room updateRoom(Room room) {
+		return roomRepository.save(room);
+	}
+
+	@Override
+	public void deleteRoomById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAllRoom() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

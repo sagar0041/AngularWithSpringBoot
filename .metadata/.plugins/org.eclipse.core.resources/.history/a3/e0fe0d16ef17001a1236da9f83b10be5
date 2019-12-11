@@ -1,0 +1,78 @@
+package com.meetingRoom.model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "room")
+public class Room {
+
+	private Long room_id;
+
+	private String room_name;
+
+	private String room_location;
+
+	private Set<Facility> room_facility = new HashSet<>();
+
+	public Room(String room_name, String room_location) {
+		this.room_name = room_name;
+		this.room_location = room_location;
+	}
+
+	public Room() {
+
+	}
+
+	@Id
+	@GeneratedValue
+	@Column(name = "Room_Id")
+	public Long getRoom_id() {
+		return room_id;
+	}
+
+	public void setRoom_id(Long room_id) {
+		this.room_id = room_id;
+	}
+
+	@Column(name = "Room_Name", nullable = false, length = 100)
+	public String getRoom_name() {
+		return room_name;
+	}
+
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
+	}
+	
+	@Column(name = "Room_Location", nullable = false, length = 100)
+	public String getRoom_location() {
+		return room_location;
+	}
+
+	public void setRoom_location(String room_location) {
+		this.room_location = room_location;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Room_Facility", joinColumns = { @JoinColumn(name ="Room_Id")}, inverseJoinColumns =
+	 { @JoinColumn(name ="Facility_Id")})
+	public Set<Facility> getRoom_facility() {
+		return room_facility;
+	}
+
+	public void setRoom_facility(Set<Facility> room_facility) {
+		this.room_facility = room_facility;
+	}
+
+}

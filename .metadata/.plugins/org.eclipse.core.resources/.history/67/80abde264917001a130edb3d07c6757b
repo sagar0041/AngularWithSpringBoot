@@ -1,0 +1,9 @@
+package com.meetingRoom.model;
+
+public enum FacilityName {
+
+	Projector,
+	Router,
+	Pen;
+
+}
