@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,10 +33,17 @@ public class RoomController {
 		return listRoom;
 	}
 
-	//used to get room for id
+	// used to get room for id - update query
 	@GetMapping("/api/room/{id}")
 	public Room getRoomById(@PathVariable Long id) {
 		return service.get(id);
+	}
+
+	// used to save room -update
+	@PutMapping("/api/room/{id}")
+	public ResponseEntity<Room> updateSaveRoom(@PathVariable long id, @RequestBody Room room) {
+		Room roomUpdated = service.save(room);
+		return new ResponseEntity<Room>(room, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/api/room/delete/{id}")
@@ -44,34 +52,6 @@ public class RoomController {
 		return true;
 	}
 	
-
-	@PutMapping(path = "/api/room/update", produces = "application/JSON")
-	public Room saveOrUpdateItem(@RequestBody Room room) {
-		return service.save(room);
-	}
-	
-	
-	@PutMapping("/api/room/update/{id}")
-	public ResponseEntity<Room> updateRoom(@PathVariable(value = "id") Long id,
-			@Valid @RequestBody Room room) {
-		Room updateRoom = service.get(id);
-		updateRoom.setId(room.getId());
-		updateRoom.setName(room.getName());
-		updateRoom.setLocation(room.getLocation());
-		updateRoom.setFacility(room.getFacility());
-		final Room updatedRoom = service.save(updateRoom);
-		return ResponseEntity.ok(updatedRoom);
-	}
-	
-	@PatchMapping(path = "/api/room/patch/{id}", produces = "application/JSON")
-	public Room patchUpdateItemById(@PathVariable Long id, @Valid @RequestBody Room room) {
-		Room patchRoom = service.get(id);
-		patchRoom.setFacility(room.getFacility());
-		patchRoom.setLocation(room.getLocation());
-		Room updatedRoom = service.save(patchRoom);
-		return updatedRoom;
-	}
-
 	@PostMapping("/api/room/add")
 	public Room createRoom(@Valid @RequestBody Room room) {
 		System.out.println(room.toString());

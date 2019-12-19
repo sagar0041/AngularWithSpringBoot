@@ -3,6 +3,7 @@ package com.meetingRoom.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -46,9 +47,9 @@ public class User {
 	@Size(min = 6, max = 100)
 	private String password;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
+	private Set<Role> roles;
 
 //	@ManyToMany(fetch = FetchType.LAZY)
 //	@JoinTable(name = "user_dept", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "dept_id"))
@@ -62,6 +63,12 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+	}
+
+	public User(String name, String username, String email) {
+		this.name = name;
+		this.username = username;
+		this.email = email;
 	}
 
 	public Long getId() {

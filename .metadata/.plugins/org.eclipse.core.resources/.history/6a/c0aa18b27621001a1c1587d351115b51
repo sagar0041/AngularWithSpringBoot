@@ -1,0 +1,37 @@
+package com.meetingRoom.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "room_booking_details")
+public class RoomBookingDetails {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int booking_id;
+	
+	@Column(name = "id")
+	private int id;
+	
+	private String room_name;
+	
+	@Column(name = "user_mail")
+	private String user_mail;
+	
+	@Column(name = "bookingDateFrom")
+	private String bookingDateFrom;
+
+	@Column(name = "bookingDateTo")
+	private String bookingDateTo;
+	private String status;
+	
+
+	
+	
+
+}

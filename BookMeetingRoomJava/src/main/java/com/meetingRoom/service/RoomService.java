@@ -21,7 +21,7 @@ public class RoomService {
 	public Room save(Room room) {
 		return repo.save(room);
 	}
-
+	
 	public Room get(Long id) {
 		return repo.findById(id).get();
 	}

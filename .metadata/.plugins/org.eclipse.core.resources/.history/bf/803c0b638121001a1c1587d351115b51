@@ -1,0 +1,35 @@
+package com.meetingRoom.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.meetingRoom.message.ResponseMessage;
+import com.meetingRoom.model.RoomBookingDetails;
+import com.meetingRoom.service.RoomBookingService;
+import com.meetingRoom.service.RoomService;
+
+public class BookingController {
+
+
+	@Autowired
+	RoomBookingService roomBookingService;
+
+	@Autowired
+	RoomService roomService;
+	
+	@PostMapping(value = "/bookRoom")
+	public  ResponseEntity<?> bookRoom(Authentication auth, RoomBookingDetails room) {
+
+		String user = auth.getName();
+		Long id = room.getId();
+		String status = "PENDING";
+		
+		roomBookingService.saveBookingRoom(room);
+		String type="Room_Booking";
+		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
+
+	}
+}

@@ -1,0 +1,10 @@
+package com.meetingRoom.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "room_booking_details")
+public class RoomBookingDetails {
+
+}
