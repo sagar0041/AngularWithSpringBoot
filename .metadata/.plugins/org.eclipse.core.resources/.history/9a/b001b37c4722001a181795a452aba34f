@@ -1,0 +1,33 @@
+package com.meetingRoom.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.meetingRoom.model.RoomBookingDetails;
+
+@Repository
+public interface RoomBookingDetailsRepository  extends JpaRepository<RoomBookingDetails, Long > {
+
+	@Query(value = "select * from room_booking_detail where user_mail=:user", nativeQuery = true)
+	public List<RoomBookingDetails> allRequest(String user);
+
+	@Query(value = "select * from room_booking_detail where user_mail=:user && status='PENDING'", nativeQuery = true)
+	public List<RoomBookingDetails> pendingStatus(String user);
+
+	@Query(value = "select * from room_booking_detail where user_mail=:user && status='CONFIRM'", nativeQuery = true)
+	public List<RoomBookingDetails> confirmStatus(String user);
+
+	public List<RoomBookingDetails> cancelStatus(String user);
+
+	void updateStatus(int booking_id, String status2);
+
+	public List<RoomBookingDetails> allPendingRequest();
+
+	public List<RoomBookingDetails> allConfirmRequest();
+
+
+	
+}

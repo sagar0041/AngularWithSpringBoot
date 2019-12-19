@@ -1,8 +1,6 @@
 package com.meetingRoom.controller;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -18,11 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.meetingRoom.message.ResponseMessage;
-import com.meetingRoom.message.SignUpForm;
-import com.meetingRoom.model.Role;
-import com.meetingRoom.model.RoleName;
-import com.meetingRoom.model.Room;
 import com.meetingRoom.model.User;
 import com.meetingRoom.repository.RoleRepository;
 import com.meetingRoom.repository.UserRepository;

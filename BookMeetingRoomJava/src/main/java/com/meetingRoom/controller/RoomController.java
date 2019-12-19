@@ -42,7 +42,7 @@ public class RoomController {
 	// used to save room -update
 	@PutMapping("/api/room/{id}")
 	public ResponseEntity<Room> updateSaveRoom(@PathVariable long id, @RequestBody Room room) {
-		Room roomUpdated = service.save(room);
+		service.save(room);
 		return new ResponseEntity<Room>(room, HttpStatus.OK);
 	}
 
@@ -51,7 +51,7 @@ public class RoomController {
 		service.delete(id);
 		return true;
 	}
-	
+
 	@PostMapping("/api/room/add")
 	public Room createRoom(@Valid @RequestBody Room room) {
 		System.out.println(room.toString());
