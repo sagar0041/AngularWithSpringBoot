@@ -1,0 +1,8 @@
+package com.meetingRoom.model;
+
+public enum StatusName {
+
+	PENDING,
+    CONFIRM,
+    CANCEL
+}

@@ -23,19 +23,23 @@ public class RoomBookingService {
 		return repo.findAll();
 	}
 
-	public List<RoomBookingDetails> pendingStatus(String user) {
+	public List<RoomBookingDetails> pendingStatus(String email) {
 
-		return repo.pendingStatus(user);
+		return repo.pendingStatus(email);
 	}
 
-	public List<RoomBookingDetails> confirmStatus(String user) {
+	public List<RoomBookingDetails> confirmStatus(String email) {
 
-		return repo.confirmStatus(user);
+		return repo.confirmStatus(email);
 	}
 
-	public List<RoomBookingDetails> cancelStatus(String user) {
+	public List<RoomBookingDetails> cancelStatus(String email) {
 
-		return repo.cancelStatus(user);
+		return repo.cancelStatus(email);
+	}
+
+	public List<RoomBookingDetails> allStatus(String email) {
+		return repo.allRequest(email);
 	}
 
 	public void updateStatus(Long booking_id, String status) {
@@ -54,10 +58,6 @@ public class RoomBookingService {
 		return repo.allCancelRequest();
 	}
 
-	public List<RoomBookingDetails> allStatus(String user) {
-		return repo.allRequest(user);
-	}
-
 	public void updateemail(String email, String nemail) {
 		repo.updatemail(email, nemail);
 	}
@@ -65,10 +65,14 @@ public class RoomBookingService {
 	public List<RoomBookingDetails> AllStatus(String user) {
 		return repo.allRequest(user);
 	}
+	public List<RoomBookingDetails> allAdminStatus() {
+		return repo.allAdminStatus();
+	}
 
 	public boolean delete(Long id) {
 		repo.deleteById(id);
 		return false;
 	}
 
+	
 }

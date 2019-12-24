@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +34,8 @@ public class BookingController {
 	public ResponseEntity<?> bookRoom(@RequestBody RoomBookingDetails room) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userRepository.findByEmailId(auth.getName());
+		System.out.println(auth.getName());
+		System.out.println(user.toString());
 		String email = user.getEmail();
 		room.setUser_mail(email);
 		roomBookingService.saveBookingRoom(room);
@@ -47,6 +48,7 @@ public class BookingController {
 		String status = "CONFIRM";
 		roomBookingService.updateStatus(booking_id, status);
 		return new ResponseEntity<>(new ResponseMessage("Confirm Room Successfull"), HttpStatus.OK);
+
 	}
 
 	@GetMapping("/api/room/bookRoom/cancelRequest/{booking_id}/{id}")
@@ -57,9 +59,46 @@ public class BookingController {
 		return new ResponseEntity<>(new ResponseMessage("Cancel Room Successfull"), HttpStatus.OK);
 	}
 
-	@GetMapping("/api/bookRoom/getAllBookRoom")
+	@GetMapping("/api/getUserRoom/getAllBookRoom")
 	public List<RoomBookingDetails> getAllBookRoom() {
-		List<RoomBookingDetails> listAllBookRoom = roomBookingService.listAll();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		List<RoomBookingDetails> listAllBookRoom = roomBookingService.allStatus(email);
+		return listAllBookRoom;
+	}
+
+	@GetMapping("/api/getUserRoom/pendingStatus")
+	public List<RoomBookingDetails> pendingStatus() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		List<RoomBookingDetails> list = roomBookingService.pendingStatus(email);
+		return list;
+	}
+
+	@GetMapping("/api/getUserRoom/confirmStatus")
+	public List<RoomBookingDetails> confirmStatus(Authentication authentication) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		List<RoomBookingDetails> list = roomBookingService.confirmStatus(email);
+		return list;
+	}
+
+	@GetMapping(value = "/api/getUserRoom/cancelStatus")
+	public List<RoomBookingDetails> cancelStatus(Authentication authentication) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		List<RoomBookingDetails> list = roomBookingService.cancelStatus(email);
+		return list;
+	}
+
+	// to show admin confirm cancel and pending records
+	@GetMapping("/api/bookRoom/getAllBookRoom")
+	public List<RoomBookingDetails> getAllAdminBookRoom() {
+		List<RoomBookingDetails> listAllBookRoom = roomBookingService.allAdminStatus();
 		return listAllBookRoom;
 	}
 

@@ -1,0 +1,18 @@
+package com.meetingRoom.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.meetingRoom.model.Facility;
+
+public class DepartmentController {
+
+	@GetMapping("/api/dept/getAllDept")
+	public List<Facility> getAllRoom() {
+		List<Facility> listFacility = service.listAll();
+		return listFacility;
+	}
+
+}
+

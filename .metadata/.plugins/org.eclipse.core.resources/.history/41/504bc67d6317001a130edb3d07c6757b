@@ -1,9 +1,0 @@
-package com.meetingRoom.service;
-
-public class RoomService {
-
-	public void saveBookingRoom(RoomBookingDetails bookingDetail);
-
-	public List<RoomBookingDetails> listAll();
-
-}

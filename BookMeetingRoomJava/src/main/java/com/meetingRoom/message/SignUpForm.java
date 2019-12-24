@@ -5,6 +5,8 @@ import java.util.Set;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
+import com.meetingRoom.model.Department;
+
 public class SignUpForm {
 	@Size(min = 3, max = 50)
 	private String name;
@@ -16,12 +18,12 @@ public class SignUpForm {
 	@Email
 	private String email;
 
+	private Set<String> dept;
+
 	private Set<String> role;
 
 	@Size(min = 6, max = 40)
 	private String password;
-
-	private Set<String> department;
 
 	public String getName() {
 		return name;
@@ -63,12 +65,12 @@ public class SignUpForm {
 		this.role = role;
 	}
 
-	public Set<String> getDepartment() {
-		return department;
+	public Set<String> getDept() {
+		return dept;
 	}
 
-	public void setDepartment(Set<String> department) {
-		this.department = department;
+	public void setDept(Set<String> dept) {
+		this.dept = dept;
 	}
 
 }

@@ -52,7 +52,7 @@ public class UserController {
 		User userUpdated = service.save(user);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/api/user/add")
 	public User createRoom(@Valid @RequestBody User user) {
 		System.out.println(user.toString());
@@ -62,7 +62,7 @@ public class UserController {
 		user.getRoles();
 		return service.save(user);
 	}
-	
+
 	@DeleteMapping("/api/user/delete/{id}")
 	public boolean deleteRoom(@PathVariable Long id) {
 		service.delete(id);
