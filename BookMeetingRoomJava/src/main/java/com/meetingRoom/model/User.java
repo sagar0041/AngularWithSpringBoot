@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
@@ -49,9 +50,8 @@ public class User {
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 
-	@ManyToMany(cascade = CascadeType.MERGE)
-	@JoinTable(name = "user_dept", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "dept_id"))
-	private Set<Department> department;
+	@NotNull
+	private String department;
 
 	public User() {
 	}
@@ -61,6 +61,23 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+	}
+
+	public User(String name, String username, String email, String password, String department) {
+		this.name = name;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.department = department;
+	}
+
+	public User(String name, String username, String email, Set<Role> roles, String department) {
+
+		this.name = name;
+		this.username = username;
+		this.email = email;
+		this.roles = roles;
+		this.department = department;
 	}
 
 	public User(String name, String username, String email) {
@@ -117,11 +134,11 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Set<Department> getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Set<Department> department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 

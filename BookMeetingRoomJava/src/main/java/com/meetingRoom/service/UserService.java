@@ -25,7 +25,7 @@ public class UserService {
 	public User get(Long id) {
 		return repo.findById(id).get();
 	}
-	
+
 	public User get(String email) {
 		return repo.findByEmail(email).get();
 	}

@@ -24,7 +24,6 @@ import com.meetingRoom.message.JwtResponse;
 import com.meetingRoom.message.LoginForm;
 import com.meetingRoom.message.ResponseMessage;
 import com.meetingRoom.message.SignUpForm;
-import com.meetingRoom.model.Department;
 import com.meetingRoom.model.Role;
 import com.meetingRoom.model.RoleName;
 import com.meetingRoom.model.User;
@@ -65,6 +64,7 @@ public class AuthRestAPIs {
 
 		return ResponseEntity.ok(
 				new JwtResponse(jwt, userDetails.getUsername(), loginRequest.getEmail(), userDetails.getAuthorities()));
+
 	}
 
 	@PostMapping("/signup")
@@ -80,11 +80,10 @@ public class AuthRestAPIs {
 
 		// Creating user's account
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-				encoder.encode(signUpRequest.getPassword()));
+				encoder.encode(signUpRequest.getPassword()), signUpRequest.getDepartment());
 
 		Set<String> strRoles = signUpRequest.getRole();
-		Set<Role> roles = new HashSet<>();	
-		Set<Department> dept = new HashSet<>();
+		Set<Role> roles = new HashSet<>();
 
 		strRoles.forEach(role -> {
 			switch (role) {
@@ -114,7 +113,6 @@ public class AuthRestAPIs {
 		});
 
 		user.setRoles(roles);
-		user.setDepartment(dept);
 		userRepository.save(user);
 
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);

@@ -1,0 +1,47 @@
+package com.meetingRoom.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "dept")
+public class Department {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "dept_id")
+	private Long id;
+
+	@Column(name = "dept_name")
+	private Department name;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Department getName() {
+		return name;
+	}
+
+	public void setName(Department name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "" + name + "";
+	}
+
+	public Department() {
+
+	}
+
+}

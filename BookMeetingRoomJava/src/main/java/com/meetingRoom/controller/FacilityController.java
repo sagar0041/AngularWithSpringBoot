@@ -18,7 +18,7 @@ public class FacilityController {
 	private FacililtyService service;
 
 	@GetMapping("/api/faciltiy/getAllFacility")
-	public List<Facility> getAllRoom() {
+	public List<Facility> getAllFacility() {
 		List<Facility> listFacility = service.listAll();
 		return listFacility;
 	}
