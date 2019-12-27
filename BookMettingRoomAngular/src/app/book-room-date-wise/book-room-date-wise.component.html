@@ -1,0 +1,32 @@
+<div class="container-fluid">
+        {{errorMessage}}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>
+                <p>Room Book</p>
+            </h2>
+            <div class="form-group">
+                <div>
+                    <label for="datetimepicker">Date Time To:</label>
+                    <br>
+                    <angular2-date-picker class="form-control" id="datetimepicker" [(ngModel)]="form.date1"
+                        [settings]="settings" style="padding: 0.2rem 0.1rem">
+                    </angular2-date-picker>
+                </div>
+                <br>
+                <div>
+                    <label for="datetimepicker">Date Time From:</label>
+                    <br>
+                    <angular2-date-picker class="form-control" id="datetimepicker" [(ngModel)]="form.date2"
+                        [settings]="settings" style="padding: 0.2rem 0.1rem">
+                    </angular2-date-picker>
+                </div>
+                <br>
+                <a style="margin-left: 50px;" (click)="viewAvailable(date)" class="btn btn-success">
+                    <span class="glyphicon glyphicon-ok"></span> View Room Availability
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

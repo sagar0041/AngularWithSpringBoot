@@ -75,6 +75,31 @@
                                 <td>
                                     <strong>
                                         <span class="glyphicon glyphicon-check text-primary"></span>
+                                        Date From:
+                                    </strong>
+                                </td>
+                                <td *ngFor="let room of confirmRoom" style="padding-left: 25px; color:dimgray;">
+                                    <p>
+                                        {{room.date1 | uppercase}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-check text-primary"></span>
+                                        Date to:
+                                    </strong>
+                                </td>
+                                <td *ngFor="let room of confirmRoom" style="padding-left: 25px; color:dimgray;">
+                                    <p>
+                                        {{room.date2 | uppercase}}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        <span class="glyphicon glyphicon-check text-primary"></span>
                                         Room Facility
                                     </strong>
                                 </td>

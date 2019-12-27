@@ -43,8 +43,13 @@ export class UserService {
     return this.http.get(this.tlUrl, { responseType: 'text' });
   }
 
+  
   public getRoom() {
     return this.http.get("http://localhost:8080/api/room/getAllRoom");
+  }
+//to get the room from date
+  public getRoombyDate() {
+    return this.http.get("http://localhost:8080/api/bookRoomForm/Datetime");
   }
   public getUser() {
     return this.http.get(this.searchUrl);
@@ -122,6 +127,9 @@ export class UserService {
     return this.user;
   }
 
-
+  public confirmRoombyDate() {
+    return this.http.get("http://localhost:8080/api/confirmDate");
+  }
+  
 }
 

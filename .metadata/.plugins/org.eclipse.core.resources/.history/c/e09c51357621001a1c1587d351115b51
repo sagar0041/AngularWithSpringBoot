@@ -1,8 +1,0 @@
-package com.meetingRoom.model;
-
-public class Snippet {
-	public static void main(String[] args) {
-		  this.router.navigate(['user'])
-	}
-}
-

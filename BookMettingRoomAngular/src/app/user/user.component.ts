@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService,private router: Router) { }
 
   ngOnInit() {
-    let resp = this.userService.getRoom();
+    let resp = this.userService.getRoombyDate();
     resp.subscribe((data) => this.rooms = data);
   }
 

@@ -15,10 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meetingRoom.message.ResponseMessage;
+import com.meetingRoom.model.Date;
+import com.meetingRoom.model.Room;
 import com.meetingRoom.model.RoomBookingDetails;
 import com.meetingRoom.model.User;
+import com.meetingRoom.repository.DateRepository;
 import com.meetingRoom.repository.UserRepository;
+import com.meetingRoom.service.DateServcie;
 import com.meetingRoom.service.RoomBookingService;
+import com.meetingRoom.service.RoomService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -29,6 +34,13 @@ public class BookingController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	DateRepository dateRepository;
+
+	@Autowired
+	RoomService roomSertvice;
+	
 
 	@PostMapping("/api/room/bookRoom")
 	public ResponseEntity<?> bookRoom(@RequestBody RoomBookingDetails room) {
@@ -101,5 +113,40 @@ public class BookingController {
 		List<RoomBookingDetails> listAllBookRoom = roomBookingService.allAdminStatus();
 		return listAllBookRoom;
 	}
+
+	@PostMapping("/api/bookRoomForm/Datetime")
+	public ResponseEntity<?> bookRoomByDate(@RequestBody Date date) {
+		String status = "CONFIRM";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		Date datetime = new Date(email,date.getDate1(),date.getDate2());
+		dateRepository.save(datetime);
+		return new ResponseEntity<>(new ResponseMessage("Room Book By Date Successfull"), HttpStatus.OK);
+	}
+
+	@GetMapping("/api/bookRoomForm/Datetime")
+	public List<Room> bookRoomByDatetime() {
+		String status = "CONFIRM";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		List<Date> date = dateRepository.AllRequest(email);
+		System.out.println(date.get(0).getDate1());
+		System.out.println(date.get(0).getDate2());
+		List<Room> list = roomSertvice.availableRoomByDate(date.get(0).getDate1(), date.get(0).getDate2(), status);
+		System.out.println(list);
+		return list;
+	}
+	
+	@GetMapping("/api/confirmDate")
+	public List<Date> confirmRoomByDate(){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		List<Date> date = dateRepository.AllRequestRecords();
+		return date;
+	}
+
 
 }

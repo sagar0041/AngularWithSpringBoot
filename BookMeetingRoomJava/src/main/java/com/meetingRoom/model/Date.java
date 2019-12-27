@@ -9,18 +9,28 @@ import javax.persistence.Id;
 public class Date {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
+
+	private String email;
 
 	private String date1;
 
 	private String date2;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getDate1() {
@@ -37,6 +47,21 @@ public class Date {
 
 	public void setDate2(String date2) {
 		this.date2 = date2;
+	}
+
+	public Date(String date1, String date2) {
+		this.date1 = date1;
+		this.date2 = date2;
+	}
+
+	public Date(String email, String date1, String date2) {
+		this.email = email;
+		this.date1 = date1;
+		this.date2 = date2;
+	}
+
+	public Date() {
+
 	}
 
 }

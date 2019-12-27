@@ -17,7 +17,7 @@ public class RoomBookingDetails {
 
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "room_name")
 	private String name;
 
@@ -25,6 +25,12 @@ public class RoomBookingDetails {
 	private String user_mail;
 
 	private String status;
+
+	@Column(name = "bookingDateFrom")
+	private String bookingDateFrom;
+
+	@Column(name = "bookingDateTo")
+	private String bookingDateTo;
 
 	public Long getBooking_id() {
 		return booking_id;
@@ -69,7 +75,6 @@ public class RoomBookingDetails {
 	public RoomBookingDetails() {
 	}
 
-	
 	public RoomBookingDetails(Long booking_id, Long id, String name, String user_mail, String status) {
 		this.booking_id = booking_id;
 		this.id = id;
@@ -78,11 +83,48 @@ public class RoomBookingDetails {
 		this.status = status;
 	}
 
+	public RoomBookingDetails(String name, String user_mail, String status, String bookingDateFrom,
+			String bookingDateTo) {
+		super();
+		this.name = name;
+		this.user_mail = user_mail;
+		this.status = status;
+		this.bookingDateFrom = bookingDateFrom;
+		this.bookingDateTo = bookingDateTo;
+	}
+
+	public String getBookingDateFrom() {
+		return bookingDateFrom;
+	}
+
+	public void setBookingDateFrom(String bookingDateFrom) {
+		this.bookingDateFrom = bookingDateFrom;
+	}
+
+	public String getBookingDateTo() {
+		return bookingDateTo;
+	}
+
+	public void setBookingDateTo(String bookingDateTo) {
+		this.bookingDateTo = bookingDateTo;
+	}
+
 	@Override
 	public String toString() {
 		return "RoomBookingDetails [booking_id=" + booking_id + ", id=" + id + ", name=" + name + ", user_mail="
 				+ user_mail + ", status=" + status + "]";
 	}
 
-	
+	public RoomBookingDetails(Long booking_id, Long id, String name, String user_mail, String status,
+			String bookingDateFrom, String bookingDateTo) {
+
+		this.booking_id = booking_id;
+		this.id = id;
+		this.name = name;
+		this.user_mail = user_mail;
+		this.status = status;
+		this.bookingDateFrom = bookingDateFrom;
+		this.bookingDateTo = bookingDateTo;
+	}
+
 }

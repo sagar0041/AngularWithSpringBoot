@@ -1,5 +1,0 @@
-package com.meetingRoom.repository;
-
-public interface RoomBookingDetails {
-
-}

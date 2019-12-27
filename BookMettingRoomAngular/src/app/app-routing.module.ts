@@ -14,6 +14,7 @@ import { BookroomComponent } from './bookroom/bookroom.component';
 import { AdminBookRoomComponent } from './admin-book-room/admin-book-room.component';
 import { ShowUserRoomComponent } from './show-user-room/show-user-room.component';
 import { ChangeMailComponent } from './change-mail/change-mail.component';
+import { BookRoomDateWiseComponent } from './book-room-date-wise/book-room-date-wise.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,10 @@ const routes: Routes = [
     {
         path: 'ChangeMail',
         component: ChangeMailComponent
+    },
+    {
+        path: 'DateWise',
+        component: BookRoomDateWiseComponent
     },
     {
         path: 'auth/login',

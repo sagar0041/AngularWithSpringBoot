@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './sigup-info';
+import { DateTime } from './datetime';
  
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,8 +30,11 @@ export class AuthService {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 
-  public getDept() {
+  public getDept() {  
     return this.http.get("http://localhost:8080/api/auth/dept");
   }
   
+  datetime(info: DateTime): Observable<any> {
+    return this.http.post<any>("http://localhost:8080/api/bookRoomForm/Datetime", info, httpOptions);
+  }
 }

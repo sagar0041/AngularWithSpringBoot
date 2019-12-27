@@ -57,5 +57,7 @@ public class RoomService {
 
 		return repo.availableRoomByDate(date1, date2, status);
 	}
+	
+	
 
 }

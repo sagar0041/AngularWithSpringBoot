@@ -27,6 +27,10 @@ import { NgxPaginationModule } from 'ngx-pagination'
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ShowUserRoomComponent } from './show-user-room/show-user-room.component';
 import { ChangeMailComponent } from './change-mail/change-mail.component';
+import { BookRoomDateWiseComponent } from './book-room-date-wise/book-room-date-wise.component';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { RoomBookDateComponent } from './room-book-date/room-book-date.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +50,9 @@ import { ChangeMailComponent } from './change-mail/change-mail.component';
     AdminBookRoomComponent,
     ShowUserRoomComponent,
     ChangeMailComponent,
-   ],
+    BookRoomDateWiseComponent,
+    RoomBookDateComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,8 +62,9 @@ import { ChangeMailComponent } from './change-mail/change-mail.component';
     MaterialModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    AngularDateTimePickerModule,
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType:'danger'
+      confirmButtonType: 'danger'
     }),
   ],
   providers: [httpInterceptorProviders, UserService],

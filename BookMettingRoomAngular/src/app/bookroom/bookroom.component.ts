@@ -14,14 +14,22 @@ export class BookroomComponent implements OnInit {
   facilitys: any;
   room: Room;
   message: string;
-  email:string;
+  email: string;
+  confirmRoom: any;
 
-  constructor(private service: UserService, private router: Router,private tokenStorage:TokenStorageService, private route: ActivatedRoute) { }
+  constructor(private service: UserService, private router: Router, private tokenStorage: TokenStorageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.room = this.service.getter();
     let resp = this.service.getFacility();
     resp.subscribe((data) => this.facilitys = data);
+    this.confirmRoomByDate();
+  }
+
+  confirmRoomByDate() {
+    let resp = this.service.confirmRoombyDate();
+    resp.subscribe((data) => this.confirmRoom = data);
+
   }
 
   ConfirmRoom(room) {
@@ -35,7 +43,7 @@ export class BookroomComponent implements OnInit {
     )
   }
 
-  CancelRoom(){
+  CancelRoom() {
     this.router.navigate(['user'])
   }
 
