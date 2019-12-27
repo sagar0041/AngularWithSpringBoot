@@ -1,0 +1,83 @@
+<!-- <div class="container">
+    <div class="row">
+        <div id="custom-search-input">
+            <div class="input-group col-md-50" style="text-align: center">
+                <input type="text" class="search-query form-control" placeholder="Search With Email Address"
+                    name="name" [(ngModel)]="name" />
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button" (click)="findUserByEmailId()">
+                        <span class=" glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2 custyle">
+            <table class="table table-striped custab">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th colspan="1">Roles</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td *ngFor="let role of user.roles">
+                            {{role.name}}</td>
+                        <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delteUser(user.id)"><span
+                                    class="glyphicon glyphicon-remove"></span>
+                                Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+<hr>
+<h1 style="text-align: center;">User Details</h1>
+<hr>
+<div class="container">
+    <input type="text" placeholder="Search" [(ngModel)]="searchText" />
+</div>
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<div style="margin-top:-90px ;" class="container">
+    <table class="table table-striped custab">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Department</th>
+                <th colspan="3" style="text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users | filter:searchText | paginate: { itemsPerPage: 5,currentPage: p}">
+                <td>{{user.name | titlecase}}</td>
+                <td>{{user.username | titlecase}}</td>
+                <td>{{user.email}}</td>
+                <td *ngFor="let role of user.roles">
+                    {{role.name | uppercase}}</td>
+
+                <td>{{user.department}}</td>
+                <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deleteRoom(user.id)">
+                        Delete</button></td>
+                <td><button class="btn btn-success" (click)="updateUser(user)" style="margin-left: 20px;">
+                        Update</button></td>
+            </tr>
+        </tbody>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>
+</div>

@@ -1,0 +1,45 @@
+<!-- <div *ngIf="info.token; else loggedOut">
+  <h5 class="text-primary">Your Information</h5>
+  <p>
+    <strong>Username:</strong> {{info.username}}<br/>
+    <strong>Roles:</strong> {{info.authorities}}<br />
+  </p>
+  <button class="btn btn-secondary" (click)="logout()">Logout</button>
+</div> -->
+
+<ng-template #loggedOut>
+    <div class="jumbotron">
+        <h1 style="text-align: center;">Welcome to Book Metting Room!</h1>
+    </div>
+</ng-template>
+
+<table *ngIf="info.token; else loggedOut" class="table-fill">
+    <thead>
+        <tr>
+            <th colspan="2" class="text-center">Profile</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Username</td>
+            <td>{{profile.username}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{profile.email}}</td>
+        </tr>
+        <tr *ngFor="let role of profile.roles">
+            <td >Role</td>
+            <td>{{role.name}}</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>{{profile.department}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <input type="button" (click)="onLogout()" value="Logout" />
+            </td>
+        </tr>
+    </tbody>
+</table>
