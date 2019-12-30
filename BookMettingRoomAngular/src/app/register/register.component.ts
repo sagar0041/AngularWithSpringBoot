@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     // let resp = this.authService.getDept();
     // resp.subscribe((data) => this.dept = data);
+    this.form.department = [];
   }
 
 

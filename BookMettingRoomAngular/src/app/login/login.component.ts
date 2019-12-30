@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: any = {};
-  isLoggedIn = false; email
+  isLoggedIn = false;
+  email;
+  username;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.email= this.tokenStorage.getUsername();
+      this.username= this.tokenStorage.getUsername();
       this.roles = this.tokenStorage.getAuthorities();
     }
   }
@@ -41,12 +43,14 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUsername(data.username);
         this.tokenStorage.saveEmail(data.email);
         this.tokenStorage.saveAuthorities(data.authorities);
+        this.tokenStorage.saveUsername(data.username);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
-      //  this.username = this.tokenStorage.getUsername();
+        this.username = this.tokenStorage.getUsername();
         this.email = this.tokenStorage.getEmail();
+        this.username = this.tokenStorage.getUsername();
         this.reloadPage();
       },
       error => {

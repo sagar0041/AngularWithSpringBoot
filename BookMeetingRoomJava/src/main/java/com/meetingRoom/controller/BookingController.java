@@ -21,7 +21,6 @@ import com.meetingRoom.model.RoomBookingDetails;
 import com.meetingRoom.model.User;
 import com.meetingRoom.repository.DateRepository;
 import com.meetingRoom.repository.UserRepository;
-import com.meetingRoom.service.DateServcie;
 import com.meetingRoom.service.RoomBookingService;
 import com.meetingRoom.service.RoomService;
 
@@ -50,7 +49,14 @@ public class BookingController {
 		System.out.println(user.toString());
 		String email = user.getEmail();
 		room.setUser_mail(email);
+		List<Date> date = dateRepository.AllRequestRecords();
+		String date1 = date.get(0).getDate1();
+		String date2 = date.get(0).getDate2();
+		room.setBookingDateFrom(date1);
+		room.setBookingDateTo(date2);
 		roomBookingService.saveBookingRoom(room);
+		System.out.println(room.toString());
+		System.out.println("Book Room Succe");
 		return new ResponseEntity<>(new ResponseMessage("Book Room Successfull"), HttpStatus.OK);
 	}
 
@@ -116,7 +122,7 @@ public class BookingController {
 
 	@PostMapping("/api/bookRoomForm/Datetime")
 	public ResponseEntity<?> bookRoomByDate(@RequestBody Date date) {
-		String status = "CONFIRM";
+//		String status = "CONFIRM";
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userRepository.findByEmailId(auth.getName());
 		String email = user.getEmail();

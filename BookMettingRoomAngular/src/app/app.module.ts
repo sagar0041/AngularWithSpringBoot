@@ -30,7 +30,8 @@ import { ChangeMailComponent } from './change-mail/change-mail.component';
 import { BookRoomDateWiseComponent } from './book-room-date-wise/book-room-date-wise.component';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { RoomBookDateComponent } from './room-book-date/room-book-date.component';
-
+import { AuthService } from './auth/auth.service';
+import { AuthGuardGuard } from './authguard.guard';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { RoomBookDateComponent } from './room-book-date/room-book-date.component
     ChangeMailComponent,
     BookRoomDateWiseComponent,
     RoomBookDateComponent,
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -67,7 +68,7 @@ import { RoomBookDateComponent } from './room-book-date/room-book-date.component
       confirmButtonType: 'danger'
     }),
   ],
-  providers: [httpInterceptorProviders, UserService],
+  providers: [httpInterceptorProviders, AuthGuardGuard, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

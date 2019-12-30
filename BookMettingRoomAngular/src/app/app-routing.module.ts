@@ -15,7 +15,7 @@ import { AdminBookRoomComponent } from './admin-book-room/admin-book-room.compon
 import { ShowUserRoomComponent } from './show-user-room/show-user-room.component';
 import { ChangeMailComponent } from './change-mail/change-mail.component';
 import { BookRoomDateWiseComponent } from './book-room-date-wise/book-room-date-wise.component';
-
+import { AuthGuardGuard } from './authguard.guard';
 
 const routes: Routes = [
     {
@@ -24,59 +24,71 @@ const routes: Routes = [
     },
     {
         path: 'user',
-        component: UserComponent
+        component: UserComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'pm',
-        component: PmComponent
+        component: PmComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'admin',
-        component: AdminComponent
+        component: AdminComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'addRoom',
-        component: AddRoomComponent
-    },
-    {
-        path: 'signup',
-        component: RegisterComponent
+        component: AddRoomComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'BookRoom',
-        component: BookroomComponent
+        component: BookroomComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'editRoom',
-        component: EditRoomComponent
+        component: EditRoomComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'editUser',
-        component: EditUserComponent
+        component: EditUserComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'adminBookRoom',
-        component: AdminBookRoomComponent
+        component: AdminBookRoomComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'search',
-        component: SearchDeleteComponent
+        component: SearchDeleteComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'showUserRoom',
-        component: ShowUserRoomComponent
+        component: ShowUserRoomComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'ChangeMail',
-        component: ChangeMailComponent
+        component: ChangeMailComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'DateWise',
-        component: BookRoomDateWiseComponent
+        component: BookRoomDateWiseComponent,
+        canActivate: [AuthGuardGuard]
     },
     {
         path: 'auth/login',
         component: LoginComponent
+    },
+    {
+        path: 'signup',
+        component: RegisterComponent,
     },
     {
         path: '',
@@ -84,7 +96,6 @@ const routes: Routes = [
         pathMatch: 'full'
     }
 ];
-
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

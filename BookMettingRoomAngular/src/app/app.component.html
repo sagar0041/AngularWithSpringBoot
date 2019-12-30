@@ -40,26 +40,30 @@
         <a routerLink="search" class="nav-link" *ngIf="authority === 'admin'">UserDetails</a>
       </li>
       <li class="nav-item ">
-        <a routerLink="admin" class="nav-link" *ngIf="authority === 'admin'">RoomDetails</a>
+        <a routerLink="admin" class="nav-link" *ngIf="authority === 'admin'">AddRoom</a>
       </li>
       <li class="nav-item ">
-        <a routerLink="adminBookRoom" class="nav-link" *ngIf="authority === 'admin'">BookRoom</a>
+        <a routerLink="adminBookRoom" class="nav-link" *ngIf="authority === 'admin'">BookingInfo</a>
       </li>
       <li class="nav-item">
-        <a routerLink="DateWise" class="nav-link" *ngIf="authority === 'user'">BookRoom</a>
+        <a routerLink="DateWise" class="nav-link"
+          *ngIf="authority === 'user' || authority === 'pm' || authority === 'tl'">BookRoom</a>
       </li>
       <li class="nav-item">
-        <a routerLink="showUserRoom" class="nav-link" *ngIf="authority === 'user'">UserRoomDetails</a>
+        <a routerLink="showUserRoom" class="nav-link"
+          *ngIf="authority === 'user'|| authority === 'pm' || authority === 'tl'">RoomDetails</a>
       </li>
       <li class="nav-item">
-        <a routerLink="ChangeMail" class="nav-link" *ngIf="authority === 'user'">ChangeMail</a>
+        <a routerLink="ChangeMail" class="nav-link"
+          *ngIf="authority === 'user'|| authority === 'pm' || authority === 'tl'">ChangeMail</a>
       </li>
       <li class="nav-item">
-        <a routerLink="user" class="nav-link" *ngIf="authority === 'user'">Mail Request</a>
+        <a routerLink="user" class="nav-link"
+          *ngIf="authority === 'user'|| authority === 'pm' || authority === 'tl'">Mail Request</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a routerLink="pm" class="nav-link" *ngIf="authority === 'pm'">Project Manager Panel</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a routerLink="pm" class="nav-link" *ngIf="authority === 'tl'">Team Leader Panel</a>
       </li>

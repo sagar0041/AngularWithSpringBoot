@@ -79,7 +79,7 @@ public class UserController {
 	public User userProfile() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userRepository.findByEmailId(auth.getName());
-		User userDetails = new User(user.getName(), user.getUsername(), user.getEmail(), user.getRoles(),
+		User userDetails = new User(user.getUsername(), user.getEmail(), user.getRoles(),
 				user.getDepartment());
 		System.out.println(userDetails);
 		return userDetails;

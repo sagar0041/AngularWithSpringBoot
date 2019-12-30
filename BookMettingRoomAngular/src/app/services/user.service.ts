@@ -13,6 +13,7 @@ const httpOptions = {
 })
 
 export class UserService {
+  form:Room;
 
   private userUrl = 'http://localhost:8080/api/test/user';
   private pmUrl = 'http://localhost:8080/api/test/pm';
@@ -42,7 +43,6 @@ export class UserService {
   getTLBoard(): Observable<string> {
     return this.http.get(this.tlUrl, { responseType: 'text' });
   }
-
   
   public getRoom() {
     return this.http.get("http://localhost:8080/api/room/getAllRoom");
@@ -103,7 +103,7 @@ export class UserService {
   }
 
   public confirmRoom(info: Room): Observable<any> {
-    return this.http.post<any>("http://localhost:8080/api/room/bookRoom", info);
+    return this.http.post<any>("http://localhost:8080/api/room/bookRoom",info);
   }
 
   //get Profile

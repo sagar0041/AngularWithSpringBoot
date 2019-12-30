@@ -63,8 +63,13 @@ export class BookRoomDateWiseComponent implements OnInit {
     } else if (StartDate === EndDate) {
       this.errorMessage = ("Date Should not be same ");
       return false;
+    } else if (StartDate === undefined) {
+      this.errorMessage = ("Please Select Date Time From");
+      return false;
+    } else if (EndDate === undefined) {
+      this.errorMessage = ("Please Select Date Time To");
+      return false;
     }
-
 
     this.datetime = new DateTime(
       this.form.date1,

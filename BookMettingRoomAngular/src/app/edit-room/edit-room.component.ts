@@ -31,4 +31,7 @@ export class EditRoomComponent implements OnInit {
       },
     )
   }
+  CancelRoom() {
+    this.router.navigate(['admin'])
+  }
 }

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Date {
@@ -13,8 +14,10 @@ public class Date {
 
 	private String email;
 
+	@NotNull
 	private String date1;
 
+	@NotNull
 	private String date2;
 
 	public Long getId() {

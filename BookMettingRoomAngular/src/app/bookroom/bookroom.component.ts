@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { Room } from '../auth/room';
 import { TokenStorageService } from '../auth/token-storage.service';
+import { RoomBookingDetails } from '../auth/roomBookingDetails';
 
 @Component({
   selector: 'app-bookroom',
@@ -13,6 +14,7 @@ export class BookroomComponent implements OnInit {
   id: number
   facilitys: any;
   room: Room;
+  RoomBookingDetails:RoomBookingDetails
   message: string;
   email: string;
   confirmRoom: any;
@@ -32,13 +34,13 @@ export class BookroomComponent implements OnInit {
 
   }
 
-  ConfirmRoom(room) {
+  ConfirmRoom() {
     //this.message = `Confirm of ${room.name} Successful`;
     this.service.confirmRoom(this.room).subscribe(
       data => {
-        console.log(data);
+        console.log(data);  
         console.log(this.room);
-        this.router.navigate(['user'])
+        this.router.navigate(['showUserRoom'])
       },
     )
   }

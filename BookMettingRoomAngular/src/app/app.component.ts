@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
         } else if (role === 'ROLE_PM') {
           this.authority = 'pm';
           return false;
-        } else if (role === 'ROLE_PM') {
-          this.authority = 'pm';
+        } else if (role === 'ROLE_TL') {
+          this.authority = 'tl';
           return false;
         }
         this.authority = 'user';

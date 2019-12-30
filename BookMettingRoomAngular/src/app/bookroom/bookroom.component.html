@@ -78,7 +78,7 @@
                                         Date From:
                                     </strong>
                                 </td>
-                                <td *ngFor="let room of confirmRoom" style="padding-left: 25px; color:dimgray;">
+                                <td *ngFor="let room of confirmRoom"  style="padding-left: 25px; color:dimgray;">
                                     <p>
                                         {{room.date1 | uppercase}}</p>
                                 </td>
@@ -90,7 +90,7 @@
                                         Date to:
                                     </strong>
                                 </td>
-                                <td *ngFor="let room of confirmRoom" style="padding-left: 25px; color:dimgray;">
+                                <td *ngFor="let room of confirmRoom"  style="padding-left: 25px; color:dimgray;">
                                     <p>
                                         {{room.date2 | uppercase}}
                                     </p>
@@ -111,7 +111,7 @@
                         </tbody>
                     </table>
                     <br>
-                    <a style="margin-left: 50px;" (click)="ConfirmRoom(room)" class="btn btn-success">
+                    <a style="margin-left: 50px;" (click)="ConfirmRoom()" class="btn btn-success">
                         <span class="glyphicon glyphicon-ok"></span> Confirm
                     </a>
                     <a style="margin-left: 50px;" (click)="CancelRoom()" class="btn btn-danger">

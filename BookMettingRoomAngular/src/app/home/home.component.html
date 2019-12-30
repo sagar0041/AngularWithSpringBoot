@@ -8,8 +8,13 @@
 </div> -->
 
 <ng-template #loggedOut>
-    <div class="jumbotron">
-        <h1 style="text-align: center;">Welcome to Book Metting Room!</h1>
+    <div class="jumbotron jumbtron-fluid">
+        <h3 class="display-4 text-center"><a href="https://icon-library.net/icon/conference-room-icon-2.html"
+                title="Conference Room Icon #418927"><img
+                    src="https://icon-library.net//images/conference-room-icon/conference-room-icon-2.jpg"
+                    width="200"></a> Book Metting Room.</h3>
+        <hr>
+        <h2 class="display-10 text-center"> Please Login to Continue. </h2>
     </div>
 </ng-template>
 
@@ -29,7 +34,7 @@
             <td>{{profile.email}}</td>
         </tr>
         <tr *ngFor="let role of profile.roles">
-            <td >Role</td>
+            <td>Role</td>
             <td>{{role.name}}</td>
         </tr>
         <tr>

@@ -10,7 +10,7 @@ import { Roles } from '../auth/roles';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  
+
   id: number
   roles: Roles;
   user: User;
@@ -32,4 +32,9 @@ export class EditUserComponent implements OnInit {
       },
     )
   }
+
+  CancelRoom() {
+    this.router.navigate(['search'])
+  }
+
 }

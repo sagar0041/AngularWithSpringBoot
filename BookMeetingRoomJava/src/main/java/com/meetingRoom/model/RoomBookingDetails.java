@@ -112,7 +112,8 @@ public class RoomBookingDetails {
 	@Override
 	public String toString() {
 		return "RoomBookingDetails [booking_id=" + booking_id + ", id=" + id + ", name=" + name + ", user_mail="
-				+ user_mail + ", status=" + status + "]";
+				+ user_mail + ", status=" + status + ", bookingDateFrom=" + bookingDateFrom + ", bookingDateTo="
+				+ bookingDateTo + "]";
 	}
 
 	public RoomBookingDetails(Long booking_id, Long id, String name, String user_mail, String status,
