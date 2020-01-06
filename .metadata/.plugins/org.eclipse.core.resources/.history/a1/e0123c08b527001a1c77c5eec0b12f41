@@ -1,9 +1,0 @@
-package com.meetingRoom.model;
-
-public enum DepartmentName {
-
-	NO_Department,
-	JAVA,
-	PYTHON,
-	PHP
-}

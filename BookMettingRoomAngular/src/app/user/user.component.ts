@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
 
   rooms: any;
   p:number=1;
+  public searchText;
 
   constructor(private userService: UserService,private router: Router) { }
 

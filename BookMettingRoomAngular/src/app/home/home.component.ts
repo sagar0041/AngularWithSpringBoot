@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { TokenStorageService } from '../auth/token-storage.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { User } from '../auth/user';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { UserService } from '../services/user.service';
 export class HomeComponent implements OnInit {
   info: any;
   profile: any;
+  @Input() user: User;
 
   constructor(private service: UserService, private router: Router, private token: TokenStorageService) { }
 
@@ -26,11 +28,14 @@ export class HomeComponent implements OnInit {
     this.getProfile();
   }
 
+  editEmail() {
+    this.router.navigate(['/ChangeMail', this.user.id])
+  }
+
+
   getProfile() {
-    if (this.info.token) {
-      let resp = this.service.getProfile();
-      resp.subscribe((data) => this.profile = data);
-    }
+    let resp = this.service.getProfile();
+    resp.subscribe((data) => this.profile = data);
   }
 
   onLogout() {

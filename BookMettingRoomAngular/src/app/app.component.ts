@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private roles: string[];
-  private authority: string;
-  private username: string;
+  public roles: string[];
+  public authority: string;
+  public username: string;
 
   constructor(private tokenStorage: TokenStorageService, private router: Router) { }
 

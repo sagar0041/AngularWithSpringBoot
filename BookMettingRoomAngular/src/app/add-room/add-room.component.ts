@@ -17,7 +17,8 @@ export class AddRoomComponent implements OnInit {
   errorMessage: '';
   facilityid: any;
   facilityname: any;
-
+  location:'';
+  
   constructor(private service: UserService, private router: Router) { }
 
   submitted = false;

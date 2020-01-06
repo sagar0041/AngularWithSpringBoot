@@ -14,7 +14,8 @@ export class EditUserComponent implements OnInit {
   id: number
   roles: Roles;
   user: User;
-
+  department:'';
+  
   constructor(private service: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {

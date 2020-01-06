@@ -15,6 +15,7 @@ export class SearchDeleteComponent implements OnInit {
   info: any;
   message: string;
   p:number=1;
+  searchText;
 
   constructor(private service: UserService, private token: TokenStorageService, private router: Router) { }
 

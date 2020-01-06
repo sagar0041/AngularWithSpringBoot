@@ -10,7 +10,8 @@ import { RoomserviceService } from '../services/roomservice.service';
 export class ShowUserRoomComponent implements OnInit {
   adminRoomBook: any;
   p: number = 1;
-
+  searchText;
+  
   constructor(private router: Router, private service: RoomserviceService) { }
 
   ngOnInit() {

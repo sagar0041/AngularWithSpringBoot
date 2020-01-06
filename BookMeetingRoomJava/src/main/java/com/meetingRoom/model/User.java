@@ -66,7 +66,14 @@ public class User {
 	}
 
 	public User(String username, String email, Set<Role> roles, String department) {
+		this.username = username;
+		this.email = email;
+		this.roles = roles;
+		this.department = department;
+	}
 
+	public User(Long id, String username, String email, Set<Role> roles, String department) {
+		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.roles = roles;
@@ -76,6 +83,13 @@ public class User {
 	public User(String username, String email) {
 		this.username = username;
 		this.email = email;
+	}
+
+	public User(String email, Set<Role> roles, String department) {
+		this.email = email;
+		this.roles = roles;
+		this.department = department;
+
 	}
 
 	public Long getId() {
@@ -124,6 +138,12 @@ public class User {
 
 	public void setDepartment(String department) {
 		this.department = department;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", roles="
+				+ roles + ", department=" + department + "]";
 	}
 
 }

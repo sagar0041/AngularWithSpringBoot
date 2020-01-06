@@ -13,6 +13,7 @@ export class EditRoomComponent implements OnInit {
   id: number
   facilitys: any;
   room: Room;
+  location:'';
 
   constructor(private service: UserService, private router: Router, private route: ActivatedRoute) { }
 

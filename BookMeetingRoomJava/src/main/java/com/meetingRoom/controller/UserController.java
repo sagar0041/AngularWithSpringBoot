@@ -1,6 +1,7 @@
 package com.meetingRoom.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.meetingRoom.model.Role;
 import com.meetingRoom.model.User;
+import com.meetingRoom.model.mail_request;
 import com.meetingRoom.repository.RoleRepository;
 import com.meetingRoom.repository.UserRepository;
+import com.meetingRoom.service.MailRequestService;
 import com.meetingRoom.service.UserService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -33,6 +37,9 @@ public class UserController {
 
 	@Autowired
 	RoleRepository roleRepository;
+
+	@Autowired
+	MailRequestService mailService;
 
 	@GetMapping("/api/user/getAllRoom")
 	public List<User> getAllUser() {
@@ -79,10 +86,17 @@ public class UserController {
 	public User userProfile() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userRepository.findByEmailId(auth.getName());
-		User userDetails = new User(user.getUsername(), user.getEmail(), user.getRoles(),
+		User userDetails = new User(user.getId(), user.getUsername(), user.getEmail(), user.getRoles(),
 				user.getDepartment());
 		System.out.println(userDetails);
 		return userDetails;
+	}
+
+	@PostMapping(value = "/api/editMailSave")
+	public ResponseEntity<mail_request> changeMail(@RequestBody mail_request mail) {
+		
+		
+		return new ResponseEntity<mail_request>(mail, HttpStatus.OK);
 	}
 
 }

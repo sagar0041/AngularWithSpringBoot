@@ -15,7 +15,7 @@ export class AdminBookRoomComponent implements OnInit {
   confirmBookRoom: any;
   cancelBookRoom: any;
   p: number = 1;
- 
+  searchText;
   
   constructor(private router: Router, private service: RoomserviceService) { }
 

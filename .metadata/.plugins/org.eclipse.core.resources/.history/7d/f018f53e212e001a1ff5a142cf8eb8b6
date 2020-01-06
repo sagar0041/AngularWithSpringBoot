@@ -1,0 +1,51 @@
+version: '2'
+services:
+  database:
+    image: mysql
+    container_name: database
+    environment: 
+      MYSQL_ROOT_PASSWORD=root 
+      MYSQL_DATABASE=mettingroom 
+      MYSQL_USER=root 
+      MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+    volumes:
+      - mettingroomdata:/var/lib/mysql
+    networks:
+      - backendNetwork
+  
+  springbootapp:
+    image: 9082622521/bookmettingroom:0.0.1
+    container_name: bookmettingroom
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    volumes:
+      - ./Spring/target/spring-0.0.1-SNAPSHOT.jar:/application.jar
+    command: ["java", "-jar" ,"application.jar"]
+    networks:
+    - backendNetwork
+    - frontendNetwork
+    
+  angular:
+    image: nginx:alpine
+    container_name: angular
+    ports:
+      - 4200:80
+    depends on:
+      - springbootapp
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./Angular/dist/Angular/:/usr/share/nginx/html
+    networks:
+      -frontendNetwork
+      
+volumes:
+  mettingroomdata
+ 
+networks:
+  backendNetwork:
+  frontendNetwork:
+  

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Room } from '../auth/room';
 import { User } from '../auth/user';
+import { Mails } from '../auth/mail';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +14,7 @@ const httpOptions = {
 })
 
 export class UserService {
-  form:Room;
+  form: Room;
 
   private userUrl = 'http://localhost:8080/api/test/user';
   private pmUrl = 'http://localhost:8080/api/test/pm';
@@ -43,11 +44,11 @@ export class UserService {
   getTLBoard(): Observable<string> {
     return this.http.get(this.tlUrl, { responseType: 'text' });
   }
-  
+
   public getRoom() {
     return this.http.get("http://localhost:8080/api/room/getAllRoom");
   }
-//to get the room from date
+  //to get the room from date
   public getRoombyDate() {
     return this.http.get("http://localhost:8080/api/bookRoomForm/Datetime");
   }
@@ -76,7 +77,7 @@ export class UserService {
   }
 
   public updateRole(user) {
-    return this.http.post<any>("http://localhost:8080/api/user/role", user,{responseType:'text' as 'json'});
+    return this.http.post<any>("http://localhost:8080/api/user/role", user, { responseType: 'text' as 'json' });
   }
 
   public getFacility() {
@@ -103,14 +104,14 @@ export class UserService {
   }
 
   public confirmRoom(info: Room): Observable<any> {
-    return this.http.post<any>("http://localhost:8080/api/room/bookRoom",info);
+    return this.http.post<any>("http://localhost:8080/api/room/bookRoom", info);
   }
 
   //get Profile
   public getProfile() {
     return this.http.get("http://localhost:8080/api/user/profile");
   }
-  
+
   setter(room: Room) {
     this.room = room;
   }
@@ -127,9 +128,14 @@ export class UserService {
     return this.user;
   }
 
+
   public confirmRoombyDate() {
     return this.http.get("http://localhost:8080/api/confirmDate");
   }
-  
-}
 
+
+  //changeemail
+  public changemail(email): Observable<any> {
+    return this.http.post<any>("http://localhost:8080/api/editMailSave",email);
+  }
+}

@@ -82,6 +82,7 @@ const routes: Routes = [
         component: BookRoomDateWiseComponent,
         canActivate: [AuthGuardGuard]
     },
+    
     {
         path: 'auth/login',
         component: LoginComponent

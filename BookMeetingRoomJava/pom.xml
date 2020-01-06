@@ -9,13 +9,16 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.meetingRoom</groupId>
 	<artifactId>BookMeetingRoom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>BookMeetingRoom</name>
+	<name>bookmettingroom</name>
 	<description>BookMettingRoom</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -70,6 +73,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>bookmettingroom</finalName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

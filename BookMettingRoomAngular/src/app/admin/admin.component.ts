@@ -19,7 +19,9 @@ export class AdminComponent implements OnInit {
   popoverMessage:string = "Do you want to really delete?";
   confirmClicked:boolean = false;
   cancelClicked:boolean = false;
-
+  p:number=1;
+  searchText;
+  
   constructor(private service: UserService, private router: Router) { }
 
   ngOnInit() {
