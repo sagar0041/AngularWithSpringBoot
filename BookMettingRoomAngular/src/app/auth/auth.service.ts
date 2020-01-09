@@ -26,6 +26,11 @@ export class AuthService {
     return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
   }
 
+  forgetPassword(credentials: AuthLoginInfo): Observable<any> {
+    return this.http.post<any>('http://localhost:8080/api/auth/reset-password', credentials, httpOptions);
+  }
+
+
   signUp(info: SignUpInfo): Observable<string> {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
@@ -34,10 +39,11 @@ export class AuthService {
     return this.http.get("http://localhost:8080/api/auth/dept");
   }
 
+  //to get the date - user, pm, tl
   datetime(info: DateTime): Observable<any> {
     return this.http.post<any>("http://localhost:8080/api/bookRoomForm/Datetime", info, httpOptions);
   }
-  
+
   loggedIn() {
     return sessionStorage.getItem('AuthToken');
   }

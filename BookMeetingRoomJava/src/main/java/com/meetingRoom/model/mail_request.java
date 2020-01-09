@@ -1,7 +1,5 @@
 package com.meetingRoom.model;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +21,7 @@ public class mail_request {
 
 	private String status = "PENDING";
 
-	private Set<Role> role;
+	private String role;
 
 	private String department;
 
@@ -67,23 +65,18 @@ public class mail_request {
 		this.status = status;
 	}
 
-	public Set<Role> getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Set<Role> roles) {
-		this.role = roles;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Override
 	public String toString() {
 		return "mail_request [mailrequest_id=" + mailrequest_id + ", user_mail=" + user_mail + ", new_user_mail="
-				+ new_user_mail + ", status=" + status + "]";
+				+ new_user_mail + ", status=" + status + ", role=" + role + ", department=" + department + "]";
 	}
 
-	public mail_request() {
-
-	}
-
-	
 }

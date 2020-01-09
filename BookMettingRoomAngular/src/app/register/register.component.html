@@ -9,32 +9,21 @@
         <div class="card card-container">
             <img src="assets/imgs/avatar.png" id="profile-img" class="profile-img-card" />
             <form name="form-signup" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                <!-- <div class="invalid-input" role="alert" *ngIf="errorMessage">
                     {{errorMessage}}
-                </div>
-
-                <!-- <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" name="name" placeholder="Name"
-                        [(ngModel)]="form.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && !name.valid}"
-                        required />
-
-                    <div *ngIf="f.submitted && !name.valid" class="invalid-input">
-                        <div *ngIf="name.errors?.required">
-                            Name is not valid
-                        </div>
-                    </div>
                 </div> -->
 
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" class="form-control" name="username" placeholder="UserName"
-                        [(ngModel)]="form.username" #username="ngModel"
-                        [ngClass]="{ 'is-invalid': f.submitted && !username.valid}" required />
-
+                        [(ngModel)]="form.username" #username="ngModel" minlength="6"
+                        [ngClass]="{ 'is-invalid': f.submitted && !username.valid }" required />
                     <div *ngIf="f.submitted && !username.valid" class="invalid-input">
                         <div *ngIf="username.errors?.required">
-                            UserName is not valid
+                            Username is not valid
+                        </div>
+                        <div *ngIf="username.errors?.minlength">
+                            Username must be at least 6 characters
                         </div>
                     </div>
                 </div>
@@ -47,6 +36,9 @@
 
                     <div *ngIf="f.submitted && !email.valid" class="invalid-input">
                         <div *ngIf="email.errors?.required">
+                            Email is required
+                        </div>
+                        <div *ngIf="email.errors?.email">
                             Email is not valid
                         </div>
                     </div>
@@ -55,11 +47,14 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" class="form-control" name="password" placeholder="Password"
-                        [(ngModel)]="form.password" autocomplete="password" #password="ngModel"
+                        [(ngModel)]="form.password" autocomplete="password" #password="ngModel" minlength="6"
                         [ngClass]="{ 'is-invalid': f.submitted && !password.valid}" required />
                     <div *ngIf="f.submitted && !password.valid" class="invalid-input">
                         <div *ngIf="password.errors?.required">
-                            Password is not valid
+                            Password is required
+                        </div>
+                        <div *ngIf="password.errors?.minlength">
+                            Password must be at least 6 characters
                         </div>
                     </div>
                 </div>
@@ -77,14 +72,14 @@
                     </select>
                     <div *ngIf="f.submitted && !department.valid" class="invalid-input">
                         <div *ngIf="department.errors?.required">
-                            Department is not valid
+                            Department is required
                         </div>
                     </div>
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block btn-signin form-submit-button">Sign
                     Up</button>
-                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                <div *ngIf="f.submitted && isSignUpFailed" class="invalid-input">
                     Signup failed!<br />
                 </div>
             </form>

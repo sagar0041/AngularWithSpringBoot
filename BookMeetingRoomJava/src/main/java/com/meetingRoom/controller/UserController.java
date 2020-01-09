@@ -1,7 +1,6 @@
 package com.meetingRoom.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,12 +16,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.meetingRoom.model.Role;
 import com.meetingRoom.model.User;
 import com.meetingRoom.model.mail_request;
 import com.meetingRoom.repository.RoleRepository;
 import com.meetingRoom.repository.UserRepository;
 import com.meetingRoom.service.MailRequestService;
+import com.meetingRoom.service.RoomBookingService;
 import com.meetingRoom.service.UserService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -40,6 +39,9 @@ public class UserController {
 
 	@Autowired
 	MailRequestService mailService;
+
+	@Autowired
+	RoomBookingService roomBookingService;
 
 	@GetMapping("/api/user/getAllRoom")
 	public List<User> getAllUser() {
@@ -60,16 +62,6 @@ public class UserController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
-//	@PostMapping("/api/user/add")
-//	public User createRoom(@Valid @RequestBody User user) {
-//		System.out.println(user.toString());
-//		user.getName();
-//		user.getUsername();
-//		user.getEmail();
-//		user.getRoles();
-//		return service.save(user);
-//	}
-
 	@DeleteMapping("/api/user/delete/{id}")
 	public boolean deleteRoom(@PathVariable Long id) {
 		service.delete(id);
@@ -82,20 +74,31 @@ public class UserController {
 		return "user is updated";
 	}
 
+	// to get the profile in all - user, pm,tl,admin
 	@GetMapping("/api/user/profile")
 	public User userProfile() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userRepository.findByEmailId(auth.getName());
 		User userDetails = new User(user.getId(), user.getUsername(), user.getEmail(), user.getRoles(),
 				user.getDepartment());
-		System.out.println(userDetails);
 		return userDetails;
 	}
 
+	// to change mail id
 	@PostMapping(value = "/api/editMailSave")
-	public ResponseEntity<mail_request> changeMail(@RequestBody mail_request mail) {
-		
-		
+	public ResponseEntity<mail_request> changeMail(@RequestBody String newmail) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmailId(auth.getName());
+		String email = user.getEmail();
+		String roles = user.getRoles().stream().findFirst().get().toString();
+		String dept = user.getDepartment();
+		mail_request mail = new mail_request();
+		mail.setUser_mail(email);
+		mail.setDepartment(dept);
+		mail.setRole(roles);
+		mail.setNew_user_mail(newmail);
+		mailService.savemailreq(mail);
+		System.out.println(mail);
 		return new ResponseEntity<mail_request>(mail, HttpStatus.OK);
 	}
 

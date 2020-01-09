@@ -17,6 +17,7 @@ public class FacilityController {
 	@Autowired
 	private FacililtyService service;
 
+	//to get the facility - admin panel 
 	@GetMapping("/api/faciltiy/getAllFacility")
 	public List<Facility> getAllFacility() {
 		List<Facility> listFacility = service.listAll();

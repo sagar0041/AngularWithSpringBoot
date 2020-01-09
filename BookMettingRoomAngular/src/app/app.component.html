@@ -53,6 +53,16 @@
         <a routerLink="showUserRoom" class="nav-link"
           *ngIf="authority === 'user'|| authority === 'pm' || authority === 'tl'">RoomDetails</a>
       </li>
+
+      <li class="nav-item">
+        <a routerLink="userChangeRequest" class="nav-link" *ngIf="authority === 'tl'">UserMailRequest</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="tlChangeRequest" class="nav-link" *ngIf="authority === 'pm'">TLMailRequest</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="pmChangeRequest" class="nav-link" *ngIf="authority === 'admin'">PMMailRequest</a>
+      </li>
       <!-- <li class="nav-item">
         <a routerLink="ChangeMail" class="nav-link"
           *ngIf="authority === 'user'|| authority === 'pm' || authority === 'tl'">ChangeMail</a>

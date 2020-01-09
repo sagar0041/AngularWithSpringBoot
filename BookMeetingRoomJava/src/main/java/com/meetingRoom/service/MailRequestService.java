@@ -18,7 +18,7 @@ public class MailRequestService {
 		repo.save(req);
 	}
 
-	public void updateStatusmail(int id, String status) {
+	public void updateStatusmail(Long id, String status) {
 		repo.updatestatus(id, status);
 
 	}
@@ -42,9 +42,9 @@ public class MailRequestService {
 		return repo.selectPendingmailTL(status);
 	}
 
-	public List<mail_request> listAllMail() {
+	public List<mail_request> listAllPMMail() {
 
-		return repo.listAllMail();
+		return repo.listAllPMMail();
 	}
 
 	public List<mail_request> AllMailReq(String email, String status) {

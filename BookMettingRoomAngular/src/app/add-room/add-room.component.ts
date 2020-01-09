@@ -17,8 +17,8 @@ export class AddRoomComponent implements OnInit {
   errorMessage: '';
   facilityid: any;
   facilityname: any;
-  location:'';
-  
+  location: '';
+
   constructor(private service: UserService, private router: Router) { }
 
   submitted = false;
@@ -42,7 +42,7 @@ export class AddRoomComponent implements OnInit {
     };
     this.form.location = [];
   }
-  
+
   addRoom() {
     console.log(this.room);
     this.room = new Room(

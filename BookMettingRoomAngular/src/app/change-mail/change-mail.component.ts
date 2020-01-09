@@ -26,9 +26,8 @@ export class ChangeMailComponent implements OnInit {
   viewAvailable(email) {
     this.service.changemail(email).subscribe(
       data => {
-        console.log()
+        console.log(email);
         this.router.navigate(['home'])
-
       }
     )
   }
@@ -36,6 +35,7 @@ export class ChangeMailComponent implements OnInit {
   viewProfile() {
     return this.service.getProfile().subscribe((data) => this.profile = data);
   }
+
   cancel() {
     this.router.navigate(['home'])
   }

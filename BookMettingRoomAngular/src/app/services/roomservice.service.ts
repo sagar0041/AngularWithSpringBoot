@@ -17,14 +17,17 @@ export class RoomserviceService {
     return this.http.get("http://localhost:8080/api/room/getAllRoom");
   }
 
+  // to show admin confirm cancel and pending records - admin panel 
   public getAllBookRoom() {
     return this.http.get("http://localhost:8080/api/bookRoom/getAllBookRoom");
   }
 
+  //to get the confirm book room - admin panel
   public confirmRoom(booking_id, id) {
     return this.http.get(`http://localhost:8080/api/room/bookRoom/confirmRequest/${booking_id}/${id}`)
   }
 
+  //to get the cancel book room - admin panel
   public cancelRoom(booking_id, id) {
     return this.http.get(`http://localhost:8080/api/room/bookRoom/cancelRequest/${booking_id}/${id}`)
   }
@@ -33,18 +36,18 @@ export class RoomserviceService {
     return this.http.get("http://localhost:8080/api/room/bookRoom/user");
   }
 
-  public getPendingStatus(){
+  public getPendingStatus() {
     return this.http.get("http://localhost:8080/api/getUserRoom/pendingStatus");
   }
 
-  public getConfirmStatus(){
+  public getConfirmStatus() {
     return this.http.get("http://localhost:8080/api/getUserRoom/confirmStatus");
   }
 
-  public getCancelStatus(){
+  public getCancelStatus() {
     return this.http.get("http://localhost:8080/api/getUserRoom/cancelStatus");
   }
-  
+
   public getAllStatus() {
     return this.http.get("http://localhost:8080/api/getUserRoom/getAllBookRoom")
   }
@@ -52,9 +55,9 @@ export class RoomserviceService {
   setter(room: Room) {
     this.room = room;
   }
-  
+
   getter() {
     return this.room;
   }
-  
+
 }

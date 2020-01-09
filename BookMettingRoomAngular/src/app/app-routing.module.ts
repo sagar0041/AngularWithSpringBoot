@@ -16,6 +16,13 @@ import { ShowUserRoomComponent } from './show-user-room/show-user-room.component
 import { ChangeMailComponent } from './change-mail/change-mail.component';
 import { BookRoomDateWiseComponent } from './book-room-date-wise/book-room-date-wise.component';
 import { AuthGuardGuard } from './authguard.guard';
+import { UserMailRequestComponent } from './user-mail-request/user-mail-request.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { PasswordControllerComponent } from './password-controller/password-controller.component';
+import { GmailMesssageComponent } from './gmail-messsage/gmail-messsage.component';
+import { ResetPasswordSuccessMessageComponent } from './reset-password-success-message/reset-password-success-message.component';
+import { TlmailrequestComponent } from './tlmailrequest/tlmailrequest.component';
+import { PmmailrequestComponent } from './pmmailrequest/pmmailrequest.component';
 
 const routes: Routes = [
     {
@@ -73,6 +80,33 @@ const routes: Routes = [
         canActivate: [AuthGuardGuard]
     },
     {
+        path: 'userChangeRequest',
+        component: UserMailRequestComponent,
+        canActivate: [AuthGuardGuard]
+    },
+    {
+        path: 'tlChangeRequest',
+        component: TlmailrequestComponent,
+        canActivate: [AuthGuardGuard]
+    },
+    {
+        path: 'pmChangeRequest',
+        component: PmmailrequestComponent,
+        canActivate: [AuthGuardGuard]
+    },
+    {
+        path: 'auth/forgetPassword',
+        component: ForgetPasswordComponent,
+    },
+    {
+        path: 'api/auth/gmailMessage',
+        component: GmailMesssageComponent,
+    },
+    {
+        path: 'api/auth/resetMessage',
+        component: ResetPasswordSuccessMessageComponent,
+    },
+    {
         path: 'ChangeMail',
         component: ChangeMailComponent,
         canActivate: [AuthGuardGuard]
@@ -82,7 +116,7 @@ const routes: Routes = [
         component: BookRoomDateWiseComponent,
         canActivate: [AuthGuardGuard]
     },
-    
+
     {
         path: 'auth/login',
         component: LoginComponent
@@ -91,6 +125,11 @@ const routes: Routes = [
         path: 'signup',
         component: RegisterComponent,
     },
+    {
+        path: 'api/auth/confirm-reset1',
+        component: PasswordControllerComponent,
+    },
+
     {
         path: '',
         redirectTo: 'auth/login',

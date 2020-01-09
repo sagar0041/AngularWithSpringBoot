@@ -26,6 +26,7 @@ public class RoomController {
 	@Autowired
 	private RoomService service;
 
+	// to get all room - admin panel
 	@GetMapping("/api/room/getAllRoom")
 	public List<Room> getAllRoom() {
 		List<Room> listRoom = service.listAll();
@@ -45,12 +46,14 @@ public class RoomController {
 		return new ResponseEntity<Room>(room, HttpStatus.OK);
 	}
 
+	// delete room in admin panel- admin panel
 	@DeleteMapping("/api/room/delete/{id}")
 	public boolean deleteRoom(@PathVariable Long id) {
 		service.delete(id);
 		return true;
 	}
 
+	//to create a room - admin panel 
 	@PostMapping("/api/room/add")
 	public Room createRoom(@Valid @RequestBody Room room) {
 		System.out.println(room.toString());

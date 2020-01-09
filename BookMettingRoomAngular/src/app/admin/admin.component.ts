@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { TokenStorageService } from '../auth/token-storage.service';
 import { Router } from '@angular/router';
-import { Room } from '../auth/room';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin',

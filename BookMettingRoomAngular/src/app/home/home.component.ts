@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
   profile: any;
   @Input() user: User;
 
+  public roles: string[];
+  public authority: string;
+  public username: string;
+
   constructor(private service: UserService, private router: Router, private token: TokenStorageService) { }
 
 
@@ -26,6 +30,26 @@ export class HomeComponent implements OnInit {
       authorities: this.token.getAuthorities()
     };
     this.getProfile();
+
+    if (this.token.getToken()) {
+      this.roles = this.token.getAuthorities();
+      this.username = this.token.getUsername();
+      this.roles.every(role => {
+        if (role === 'ROLE_ADMIN') {
+          this.authority = 'admin';
+          return false;
+        } else if (role === 'ROLE_PM') {
+          this.authority = 'pm';
+          return false;
+        } else if (role === 'ROLE_TL') {
+          this.authority = 'tl';
+          return false;
+        }
+        this.authority = 'user';
+        return true;
+      });
+    }
+
   }
 
   editEmail() {

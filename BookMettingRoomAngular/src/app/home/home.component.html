@@ -1,67 +1,18 @@
-<!-- <div *ngIf="info.token; else loggedOut">
-  <h5 class="text-primary">Your Information</h5>
-  <p>
-    <strong>Username:</strong> {{info.username}}<br/>
-    <strong>Roles:</strong> {{info.authorities}}<br />
-  </p>
-  <button class="btn btn-secondary" (click)="logout()">Logout</button>
-</div> -->
-<!-- 
-<ng-template #loggedOut>
-    <div class="jumbotron jumbtron-fluid">
-        <h3 class="display-4 text-center"><a href="https://icon-library.net/icon/conference-room-icon-2.html"
-                title="Conference Room Icon #418927"><img
-                    src="https://icon-library.net//images/conference-room-icon/conference-room-icon-2.jpg"
-                    width="200"></a> Book Metting Room.</h3>
-        <hr>
-        <h2 class="display-10 text-center"> Please Login to Continue. </h2>
-    </div>
-</ng-template>
-<div class="container bootstrap snippet">
-    <div class="panel-body inf-content">
-        <div class="row">
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-6">
-                <br>
-                <strong>User Information</strong><br>
-                <div class="table-responsive">
-                    <table *ngIf="info.token; else loggedOut" class="table-fill">
-                        <tbody>
-                            <tr>
-                                <td class="text-primary">Username</td>
-                                <td class="text-primary">{{profile.username}}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-primary">Email</td>
-                                <td class="text-primary">{{profile.email}}</td>
-                            </tr>
-                            <tr *ngFor="let role of profile.roles">
-                                <td class="text-primary">Role</td>
-                                <td class="text-primary">{{role.name}}</td>
-                            </tr>
-                            <tr>
-                                <td class="text-primary">Department</td>
-                                <td class="text-primary">{{profile.department}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="text-center">
-                                    <input type="button" (click)="onLogout()" value="Logout" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="cards" *ngIf="info.token; else loggedOut">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">User Profile</h3>
+    <h3 *ngIf="authority === 'user'" class=" card-header text-center font-weight-bold text-center py-4">User Profile
+    </h3>
+
+    <h3 *ngIf="authority === 'tl'" class=" card-header text-center font-weight-bold text-center py-4">Techincal Lead
+        Profile</h3>
+
+    <h3 *ngIf="authority === 'pm'" class=" card-header text-center font-weight-bold text-center py-4">Project Manager
+        Profile</h3>
+
+    <h3 *ngIf="authority === 'admin'" class=" card-header text-center font-weight-bold text-center py-4">Admin
+        Profile</h3>
+
     <br>
-    <div class="container" style="margin-left: 464px;margin-top: 10px;">
+    <div class="container" style="margin-left: 530px;margin-top: 10px;">
         <div class="row">
             <div class="col-lg-4 col-sm-7">
 
@@ -78,7 +29,7 @@
                                 {{profile.username | titlecase}}</h2>
                         </div>
                         <div class="desc" style="margin-bottom: 5px;">
-                            <a style="text-decoration: none;" [routerLink]="['/ChangeMail']">
+                            <a style="text-decoration: none;">
                                 <h6 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ">
                                     {{profile.department}} <i class="fa fa-edit"></i>
                                 </h6>

@@ -32,6 +32,13 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { RoomBookDateComponent } from './room-book-date/room-book-date.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuardGuard } from './authguard.guard';
+import { UserMailRequestComponent } from './user-mail-request/user-mail-request.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { PasswordControllerComponent } from './password-controller/password-controller.component';
+import { GmailMesssageComponent } from './gmail-messsage/gmail-messsage.component';
+import { ResetPasswordSuccessMessageComponent } from './reset-password-success-message/reset-password-success-message.component';
+import { TlmailrequestComponent } from './tlmailrequest/tlmailrequest.component';
+import { PmmailrequestComponent } from './pmmailrequest/pmmailrequest.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +60,13 @@ import { AuthGuardGuard } from './authguard.guard';
     ChangeMailComponent,
     BookRoomDateWiseComponent,
     RoomBookDateComponent,
+    UserMailRequestComponent,
+    ForgetPasswordComponent,
+    PasswordControllerComponent,
+    GmailMesssageComponent,
+    ResetPasswordSuccessMessageComponent,
+    TlmailrequestComponent,
+    PmmailrequestComponent,
   ],
   imports: [
     BrowserModule,

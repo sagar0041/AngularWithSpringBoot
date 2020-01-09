@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.meetingRoom.model.User;
+import com.meetingRoom.repository.RoleRepository;
 import com.meetingRoom.repository.UserRepository;
 
 @Service
@@ -13,6 +14,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository repo;
+
+	@Autowired
+	RoleRepository roleRepository;
 
 	public List<User> listAll() {
 		return repo.findAll();
@@ -35,4 +39,7 @@ public class UserService {
 		return false;
 	}
 
+	public void updateemail(String email, String nemail) {
+		repo.updatemail(email, nemail);
+	}
 }
